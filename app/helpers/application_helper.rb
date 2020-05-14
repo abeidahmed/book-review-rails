@@ -19,4 +19,8 @@ module ApplicationHelper
     # params[:controller].index("admin/") == 0
     controller.class.parents.include?(Admin)
   end
+
+  def display_date(current_day)
+    current_day.strftime("#{current_day.day.ordinalize} %b, %Y")
+  end
 end

@@ -14,23 +14,6 @@
         Category title and description should be short and to the point.
       </p>
     </div>
-    <%= form_with(model: @category, url: admin_categories_path, class: "shadow mt-5 bg-white rounded-md p-4 md:mt-0 md:w-2/3 md:p-6") do |form| %>
-      <div>
-        <%= form.label :title, class: "text-sm text-gray-700 font-medium" %>
-        <%= form.text_field :title, class: "form-input mt-1 block w-full px-3 py-2 shadow-sm", placeholder: "Eg: Thriller" %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :description, class: "text-sm text-gray-700 font-medium" %>
-        <%= form.text_area :description, class: "form-input mt-1 block w-full px-3 py-2 shadow-sm", placeholder: "Write a short description about the category", rows: "10" %>
-      </div>
-      <div class="mt-5">
-        <span class="shadow-sm rounded-md">
-        <%= button_tag(class: "inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out") do  %>
-          <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
-          Publish
-        <% end %>
-      </span>
-      </div>
-    <% end %>
+    <%= render "form" %>
   </div>
 </main>
