@@ -1,4 +1,4 @@
-<%= form_for(:session, url: sessions_path, html: { class: "mt-8" }) do |f| %>
+<%= form_with(model: @user, url: sessions_path, html: { class: "mt-8" }) do |f| %>
   <div class="rounded-md shadow-sm">
     <div>
       <%= f.label :email, class: "sr-only" %>

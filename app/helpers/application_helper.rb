@@ -6,4 +6,12 @@ module ApplicationHelper
   def logged_in?
     !current_user.nil?
   end
+
+  def render_header
+    hide_controller = ["users", "sessions"]
+    hide_action = ["new"]
+    unless hide_controller.include?(controller.controller_name) && hide_action.include?(controller.action_name)
+      render "layouts/header"
+    end
+  end
 end
