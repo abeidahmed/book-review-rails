@@ -11,8 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body class="font-sans">
-    <%= render_header %>
-    <%= yield %>
+  <body class="font-sans text-gray-900 antialiased">
+    <% if is_admin_page? %>
+      <div data-controller="sidebar-toggle" class="flex">
+        <%= render "layouts/sidebar" %>
+        <div class="w-full flex flex-col">
+          <%= render "layouts/admin-header" %>
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <%= render_header %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

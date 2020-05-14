@@ -14,4 +14,9 @@ module ApplicationHelper
       render "layouts/header"
     end
   end
+
+  def is_admin_page?
+    # params[:controller].index("admin/") == 0
+    controller.class.parents.include?(Admin)
+  end
 end
