@@ -12,7 +12,7 @@
   </head>
 
   <body class="font-sans">
-    <% unless ["users"].include?(controller.controller_name) && ["new"].include?(controller.action_name) %>
+    <% unless ["users", "sessions"].include?(controller.controller_name) && ["new"].include?(controller.action_name) %>
       <%= render "layouts/header" %>
     <% end %>
     <%= yield %>
