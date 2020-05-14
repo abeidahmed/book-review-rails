@@ -34,14 +34,29 @@
         </div>
       </nav>
       <div class="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
-        <a href="#" class="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-          Sign in
-        </a>
-        <span class="inline-flex rounded-md shadow-sm">
-          <a href="#" class="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-            Sign up
+        <% if logged_in? %>
+          <div class="ml-3 relative">
+          <div>
+            <button data-action="navbar#profileToggle" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+            </button>
+          </div>
+          <div data-target="navbar.profile" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+              <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Settings</a>
+              <%= link_to "Sign out", user_path(current_user.id), method: "delete", class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" %>
+            </div>
+          </div>
+        </div>
+        <% else %>
+          <a href="#" class="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            Sign in
           </a>
-        </span>
+          <span class="inline-flex rounded-md shadow-sm">
+            <%= link_to "Sign up", new_user_path, class: "whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150" %>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>
@@ -94,17 +109,33 @@
             </a>
           </div>
           <div class="space-y-6">
-            <span class="w-full flex rounded-md shadow-sm">
-              <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Sign up
-              </a>
-            </span>
-            <p class="text-center text-base leading-6 font-medium text-gray-500">
-              Existing customer?
-              <a href="#" class="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
-                Sign in
-              </a>
-            </p>
+            <% if logged_in? %>
+              <div class="grid grid-cols-2 row-gap-4 col-gap-8">
+                <a href="#" class="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150">
+                  Profile
+                </a>
+                <a href="#" class="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150">
+                  Settings
+                </a>
+              </div>
+              <span class="w-full flex rounded-md shadow-sm">
+                <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                  Log out
+                </a>
+              </span>
+            <% else %>
+              <span class="w-full flex rounded-md shadow-sm">
+                <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                  Sign up
+                </a>
+              </span>
+              <p class="text-center text-base leading-6 font-medium text-gray-500">
+                Existing customer?
+                <a href="#" class="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
+                  Sign in
+                </a>
+              </p>
+            <% end %>
           </div>
         </div>
       </div>

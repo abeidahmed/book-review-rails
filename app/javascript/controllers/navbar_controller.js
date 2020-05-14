@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["mobile"];
+  static targets = ["mobile", "profile"];
 
   open() {
     this.mobileTarget.classList.remove("hidden");
@@ -9,5 +9,9 @@ export default class extends Controller {
 
   close() {
     this.mobileTarget.classList.add("hidden");
+  }
+
+  profileToggle() {
+    this.profileTarget.classList.toggle("hidden");
   }
 }
