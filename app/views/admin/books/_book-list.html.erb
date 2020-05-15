@@ -1,0 +1,27 @@
+<% books.each do |book| %>
+  <tr>
+    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+      <p class="text-sm max-w-xs truncate leading-5 text-gray-900">
+        <%= book.title %>
+      </p>
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+      <span class="truncate max-w-xs">
+        <% book.authors.each do |author| %>
+          <%= author.name %>
+        <% end %>
+      </span>
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+        <%= book.category.title%>
+      </span>
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+      <%= display_date(book.created_at) %>
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+      <%= link_to "Edit", edit_admin_book_path(book.id), class: "text-indigo-600 hover:text-indigo-900" %>
+    </td>
+  </tr>
+<% end %>

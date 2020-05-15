@@ -1,7 +1,8 @@
 class Book < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  belongs_to :author
+  has_many :categorizations
+  has_many :authors, through: :categorizations
 
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :description, length: { maximum: 500 }

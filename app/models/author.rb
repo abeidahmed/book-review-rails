@@ -3,5 +3,6 @@ class Author < ApplicationRecord
 
   scope :order_by_date, -> { order(created_at: :desc) }
 
-  has_many :books
+  has_many :categorizations
+  has_many :books, through: :categorizations
 end
