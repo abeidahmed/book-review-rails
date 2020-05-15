@@ -31,4 +31,13 @@ module ApplicationHelper
   def display_date(current_day)
     current_day.strftime("#{current_day.day.ordinalize} %b, %Y")
   end
+
+  def title(page_title = "")
+    base_title = "Book review app"
+    if page_title.empty?
+      base_title
+    else
+      "#{page_title} | #{base_title}"
+    end
+  end
 end
