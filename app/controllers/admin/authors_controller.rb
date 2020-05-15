@@ -1,4 +1,6 @@
 class Admin::AuthorsController < ApplicationController
+  before_action :is_admin?
+
   def index
     @authors = Author.order_by_date
   end

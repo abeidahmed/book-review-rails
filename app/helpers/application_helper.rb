@@ -7,6 +7,14 @@ module ApplicationHelper
     !current_user.nil?
   end
 
+  def authenticate
+    redirect_to root_url unless current_user.nil?
+  end
+
+  def is_admin?
+    redirect_to root_url if current_user.nil? || !current_user.admin?
+  end
+
   def render_header
     hide_controller = ["users", "sessions"]
     hide_action = ["new"]

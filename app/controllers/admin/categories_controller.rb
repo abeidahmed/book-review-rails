@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :is_admin?
+  
   def index
     @categories = Category.order_by_date
   end
