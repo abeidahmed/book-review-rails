@@ -10,6 +10,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    # create "uncategorized category" for default book instantiation.
+    Category.create_default_category
+
     @category = Category.new(category_param)
     if @category.save
       redirect_to admin_categories_path
@@ -31,6 +34,17 @@ class Admin::CategoriesController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    # before deleting the category, the books that is labelled with that category
+    # should be moved to "uncategorized category".
+    Category.move_to_uncategorized(@category.id)
+    # after the book has been moved to the default category, we can then
+    # delete the category.
+    @category.destroy
+    redirect_to admin_categories_path
   end
 
   private
