@@ -13,8 +13,10 @@
       <%= display_date(author.created_at) %>
     </td>
     <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-      <%= link_to "Edit", edit_admin_author_path(author.id), class: "text-indigo-600 hover:text-indigo-900" %>
-      <%= link_to "Delete", admin_author_path(author.id), method: :delete, data: { confirm: "Are you sure?" }, class: "ml-2 text-red-600 hover:text-red-900" %>
+      <% if author.name != "NA" %>
+        <%= link_to "Edit", edit_admin_author_path(author.id), class: "text-indigo-600 hover:text-indigo-900" %>
+        <%= link_to "Delete", admin_author_path(author.id), method: :delete, data: { confirm: "Are you sure?" }, class: "ml-2 text-red-600 hover:text-red-900" %>
+      <% end %>
     </td>
   </tr>
 <% end %>
