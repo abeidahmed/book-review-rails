@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :is_admin?
   before_action :set_category, only: [:edit, :update, :destroy]
-  before_action :is_default_category?, onlyt: [:edit, :update, :destroy]
+  before_action :is_default_category?, only: [:edit, :update, :destroy]
   
   def index
     @categories = Category.order_by_date
