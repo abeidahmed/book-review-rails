@@ -58,6 +58,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def is_default_category?
-    redirect_to admin_categories_path if @category.name == "Uncategorized"
+    redirect_to admin_categories_path if @category.title == "Uncategorized"
   end
 end
