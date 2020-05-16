@@ -28,11 +28,13 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    if @category.update_attributes(category_param)
-      redirect_to admin_categories_path
-      flash.now[:success] = "Successfully updated category #{@category.title}"
-    else
-      render "edit"
+    if @category.title != "Uncategorized"
+      if @category.update_attributes(category_param)
+        redirect_to admin_categories_path
+        flash.now[:success] = "Successfully updated category #{@category.title}"
+      else
+        render "edit"
+      end
     end
   end
 

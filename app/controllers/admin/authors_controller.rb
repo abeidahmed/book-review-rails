@@ -28,11 +28,13 @@ class Admin::AuthorsController < ApplicationController
 
   def update
     @author = Author.find(params[:id])
-    if @author.update_attributes(author_params)
-      redirect_to admin_authors_path
-      flash.now[:success] = "Successfully updated author #{@author.name}"
-    else
-      render "edit"
+    if @author.name != "NA"
+      if @author.update_attributes(author_params)
+        redirect_to admin_authors_path
+        flash.now[:success] = "Successfully updated author #{@author.name}"
+      else
+        render "edit"
+      end
     end
   end
 
