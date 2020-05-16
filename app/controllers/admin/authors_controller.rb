@@ -10,6 +10,9 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def create
+    # create "NA" for default book instantiation.
+    Author.create_default_author
+
     @author = Author.new(author_params)
     if @author.save
       redirect_to admin_authors_path
@@ -31,6 +34,17 @@ class Admin::AuthorsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @author = Author.find(params[:id])
+    # before deleting the author, the books that is labelled with that author
+    # should be moved to "NA".
+    Author.move_to_default_author(@author.id)
+    # after the book has been moved to the default author, we can then
+    # delete the author.
+    @author.destroy
+    redirect_to admin_authors_path
   end
 
   private
