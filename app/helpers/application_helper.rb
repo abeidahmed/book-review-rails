@@ -15,6 +15,10 @@ module ApplicationHelper
     redirect_to root_url if current_user.nil? || !current_user.admin?
   end
 
+  def only_admin
+    current_user && current_user.admin?
+  end
+
   def render_header
     hide_controller = ["users", "sessions"]
     hide_action = ["new"]
