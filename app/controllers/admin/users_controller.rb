@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if !@user.admin?
       @user.destroy
-      flash[:success] = "Successfully deleted user #{@user.title}."
+      flash[:success] = "Successfully deleted user #{@user.email}."
       redirect_to admin_users_path
     else
       flash[:error] = "Cannot delete an admin."

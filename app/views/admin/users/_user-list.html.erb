@@ -20,7 +20,10 @@
       <%= display_date(user.created_at) %>
     </td>
     <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+      <% if !user.admin? %>
+        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+        <%= link_to "Delete", admin_user_path(user.id), method: :delete, data: { confirm: "Are you sure?" }, class: "ml-2 text-red-600 hover:text-red-900" %>
+      <% end %>
     </td>
   </tr>
 <% end %>
