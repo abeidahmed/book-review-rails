@@ -5,8 +5,13 @@ export default class extends Controller {
     "authorContainer",
     "authorChevronIcon",
     "categoryContainer",
-    "categoryChevronIcon"
+    "categoryChevronIcon",
+    "sidebar"
   ];
+
+  toggleSidebar() {
+    this.sidebarTarget.classList.toggle("hidden");
+  }
 
   toggleAuthor() {
     this.authorContainerTarget.classList.toggle("hidden");
