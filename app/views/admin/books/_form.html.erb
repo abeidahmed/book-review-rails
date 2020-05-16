@@ -33,22 +33,22 @@
           <svg class="h-4 w-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
         </button>
         <div class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
-          <div class="p-1">
+          <div class="p-1 flex-shrink-0">
             <div class="relative">
               <input type="text" class="block w-full form-input pl-9 pr-3 text-sm h-9">
               <div class="absolute inset-y-0 flex items-center left-0 pl-3">
                 <svg class="h-4 w-4 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </div>
             </div>
-            <ul class="mt-2 text-sm flex-1 overflow-y-auto">
-              <%= form.collection_check_boxes :author_ids, Author.all, :id, :name, class: "inline-flex items-center" do |c| %>
-                <div class="px-2 py-1.5">
-                  <%= c.check_box class: "form-checkbox" %>
-                  <%= c.label class: "ml-1" %>
-                </div>
-              <% end %>
-            </ul>
           </div>
+          <ul class="mt-2 text-sm flex-1 overflow-y-auto">
+            <%= form.collection_check_boxes :author_ids, Author.all, :id, :name, class: "inline-flex items-center" do |c| %>
+              <div class="px-2 py-1.5">
+                <%= c.check_box class: "form-checkbox" %>
+                <%= c.label class: "ml-1" %>
+              </div>
+            <% end %>
+          </ul>
         </div>
       </div>
       <div class="border-b border-gray-200">
@@ -57,22 +57,22 @@
           <svg class="h-4 w-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
         </button>
         <div class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
-          <div class="p-1">
+          <div class="p-1 flex-shrink-0">
             <div class="relative">
               <input type="text" class="block w-full form-input pl-9 pr-3 text-sm h-9">
               <div class="absolute inset-y-0 flex items-center left-0 pl-3">
                 <svg class="h-4 w-4 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </div>
             </div>
-            <ul class="mt-2 text-sm flex-1 overflow-y-auto">
-              <%= form.collection_radio_buttons :category_id, Category.all, :id, :title, class: "inline-flex items-center" do |r| %>
-                <div class="px-2 py-1.5">
-                  <%= r.radio_button class: "form-radio" %>
-                  <%= r.label class: "ml-1" %>
-                </div>
-              <% end %>
-            </ul>
           </div>
+          <ul class="mt-2 text-sm flex-1 overflow-y-auto">
+            <%= form.collection_radio_buttons :category_id, Category.all, :id, :title, class: "inline-flex items-center" do |r| %>
+              <div class="px-2 py-1.5">
+                <%= r.radio_button class: "form-radio" %>
+                <%= r.label class: "ml-1" %>
+              </div>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
