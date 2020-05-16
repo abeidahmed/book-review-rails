@@ -25,14 +25,14 @@
       </div>
     </div>
   </div>
-  <aside style="height: calc(100vh - 64px)" class="bg-gray-50 max-w-xs w-full border-l border-gray-200">
+  <aside data-controller="form-sidebar" style="height: calc(100vh - 64px)" class="bg-gray-50 max-w-xs w-full border-l border-gray-200">
     <div class="px-6 my-4">
       <div class="border-b border-gray-200">
-        <button type="button" class="text-sm text-gray-700 font-medium py-3 w-full block inline-flex items-center justify-between focus:outline-none">
+        <button data-action="click->form-sidebar#toggleAuthor" type="button" class="text-sm text-gray-700 font-medium py-3 w-full block inline-flex items-center justify-between focus:outline-none">
           <span>Author</span>
-          <svg class="h-4 w-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+          <svg data-target="form-sidebar.authorChevronIcon" class="h-4 w-4 transform transition duration-150 ease-in-out" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
+        <div data-target="form-sidebar.authorContainer" class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
           <div class="p-1 flex-shrink-0">
             <div class="relative">
               <input type="text" class="block w-full form-input pl-9 pr-3 text-sm h-9">
@@ -52,11 +52,11 @@
         </div>
       </div>
       <div class="border-b border-gray-200">
-        <button type="button" class="text-sm text-gray-700 font-medium py-3 w-full block inline-flex items-center justify-between focus:outline-none">
+        <button data-action="click->form-sidebar#toggleCategory" type="button" class="text-sm text-gray-700 font-medium py-3 w-full block inline-flex items-center justify-between focus:outline-none">
           <span>Category</span>
-          <svg class="h-4 w-4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+          <svg data-target="form-sidebar.categoryChevronIcon" class="h-4 w-4 transform transition duration-150 ease-in-out" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
+        <div data-target="form-sidebar.categoryContainer" class="mb-1 relative h-40 overflow-y-hidden flex flex-col">
           <div class="p-1 flex-shrink-0">
             <div class="relative">
               <input type="text" class="block w-full form-input pl-9 pr-3 text-sm h-9">
