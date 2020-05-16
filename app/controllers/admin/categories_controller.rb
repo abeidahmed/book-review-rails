@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :is_admin?
+  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :is_default_category?, onlyt: [:edit, :update, :destroy]
   
   def index
     @categories = Category.order_by_date
@@ -23,11 +25,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.title != "Uncategorized"
       if @category.update_attributes(category_param)
         redirect_to admin_categories_path
@@ -39,7 +39,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     # before deleting the category, the books that is labelled with that category
     # should be moved to "uncategorized category".
     Category.move_to_uncategorized(@category.id)
@@ -53,5 +52,14 @@ class Admin::CategoriesController < ApplicationController
 
   def category_param
     params.require(:category).permit(:title, :description)
+  end
+
+  
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  def is_default_category?
+    redirect_to admin_categories_path if @category.name == "Uncategorized"
   end
 end

@@ -1,5 +1,7 @@
 class Admin::AuthorsController < ApplicationController
   before_action :is_admin?
+  before_action :set_author, only: [:edit, :update, :destroy]
+  before_action :is_default_author?, only: [:edit, :update, :destroy]
 
   def index
     @authors = Author.order_by_date
@@ -23,24 +25,19 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def edit
-    @author = Author.find(params[:id])
   end
 
   def update
-    @author = Author.find(params[:id])
-    if @author.name != "NA"
-      if @author.update_attributes(author_params)
-        redirect_to admin_authors_path
-        flash.now[:success] = "Successfully updated author #{@author.name}"
-      else
-        render "edit"
-      end
+    if @author.update_attributes(author_params)
+      redirect_to admin_authors_path
+      flash.now[:success] = "Successfully updated author #{@author.name}"
+    else
+      render "edit"
     end
   end
 
   def destroy
-    @author = Author.find(params[:id])
-    # before deleting the author, the books that is labelled with that author
+    # before deleting the author, the books that are labelled with that author
     # should be moved to "NA".
     Author.move_to_default_author(@author.id)
     # after the book has been moved to the default author, we can then
@@ -53,5 +50,13 @@ class Admin::AuthorsController < ApplicationController
 
   def author_params
     params.require(:author).permit(:name, :description)
+  end
+
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  def is_default_author?
+    redirect_to admin_authors_path if @author.name == "NA"
   end
 end
