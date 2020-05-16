@@ -5,9 +5,11 @@ class Category < ApplicationRecord
 
   has_many :books
 
+  DEFAULT_CATEGORY = "Uncategorized"
+
   def self.create_default_category
     if self.all.count == 0
-      category = self.new(title: "Uncategorized", description: "System generated")
+      category = self.new(title: DEFAULT_CATEGORY, description: "System generated")
       category.save
     end
   end
@@ -15,7 +17,7 @@ class Category < ApplicationRecord
   def self.move_to_uncategorized(del_category_id)
     books = Book.where(category_id: del_category_id)
     if !books.nil?
-      uncategorized = self.find_by(title: "Uncategorized")
+      uncategorized = self.find_by(title: DEFAULT_CATEGORY)
       books.each do |book|
         book.category_id = uncategorized.id
         book.save
