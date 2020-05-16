@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :authors
     resources :books
     resources :categories
+    resources :users, only: [:index, :destroy]
   end
 end

@@ -1,0 +1,38 @@
+<%= provide(:title, "User list") %>
+
+<main style="min-height: calc(100vh - 64px)" class="bg-gray-100 p-6 relative">
+  <div>
+    <div class="min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+        User list
+      </h2>
+    </div>
+  </div>
+
+  <div class="my-16 shadow overflow-hidden sm:rounded-lg">
+    <div class="align-middle inline-block w-full overflow-x-auto border-b border-gray-200">
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Name
+            </th>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Email address
+            </th>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Role
+            </th>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Joined on
+            </th>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <%= render "user-list", users: @users %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
