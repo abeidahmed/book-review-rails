@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :authors, through: :categorizations
 
   validates :title, presence: true, uniqueness: { case_sensitive: false }
