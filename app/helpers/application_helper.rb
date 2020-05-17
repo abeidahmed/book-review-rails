@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def authenticate
-    redirect_to root_url unless current_user.nil?
+    redirect_to root_url if current_user.nil?
   end
 
   def is_admin?
