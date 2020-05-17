@@ -1,0 +1,6 @@
+<div class="mt-8 flex items-center overflow-x-auto space-x-4">
+  <%= link_to "All", root_url, class: "text-gray-700 rounded-md py-2 px-3 hover:bg-gray-200 hover:text-gray-900 transition duration-150 ease-in-out" %>
+  <% categories.all.each do |category| %>
+    <%= link_to category.title, category_path(category.id), class: "text-gray-700 rounded-md py-2 px-3 hover:bg-gray-200 hover:text-gray-900 transition duration-150 ease-in-out" %>
+  <% end %>
+</div>

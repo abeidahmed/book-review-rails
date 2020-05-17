@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions
+  resources :categories, only: [:show]
 
   namespace :admin do
     resources :authors

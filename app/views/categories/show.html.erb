@@ -1,0 +1,7 @@
+<main class="container mx-auto">
+  <%= render "static_pages/page_text" %>
+  
+  <%= render "static_pages/category_filter", categories: @categories %>
+
+  <%= render "static_pages/book_list", books: @category.books %>
+</main>

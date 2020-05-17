@@ -1,0 +1,9 @@
+<div class="mt-2">
+  <% books.each do |book| %>
+    <%= book.title %>
+    <%= book.description %>
+    <% book.authors.each do |author| %>
+      <%= author.name %>
+    <% end %>
+  <% end %>
+</div>
