@@ -6,5 +6,6 @@ class CreateAuthors < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :authors, :name
   end
 end
